@@ -11,3 +11,7 @@ Bluetooth serial connexions and send them to wia.io cloud and messaging service.
 ## Bash shellscripts
 
 * Debian post-install script for Raspberry Pi and AWS EC2 cloud instances including Docker installation.
+* rpiCloudBackup: backup Raspberry Pi folder into cloud storage services using Rclone
+* rpiNetBiosScanHostsUpdate: I wrote this script before I had a DNS server to handle a cluster of RPIs.
+Basically you will need NBTSCAN installed and SMB Client to resolve name based on Netbios. A kind of
+home made "bonjour" service.
