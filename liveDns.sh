@@ -17,7 +17,7 @@ CURRENT_IP=$(wget -O - -q https://api.ipify.org/)
 
 # Getting the current IP address in DNS record with awk and sed:
 RECORD_IP=$(wget -O - -q --header "X-Api-Key: $APIKEY" https://dns.api.gandi.net/api/v5/domains/tsimon.me/$DOMAIN/$SUBDOMAIN/A | awk -F':' '{print $7}' | \
-sed 's/\[//;s/\"//;s/\"//;s/\]//;s/\}//;s/^[ \t]*//')
+sed 's/\[//;s/\"//;s/\"//;s/\]//;s/\}//;s/^[ \t]*//' | tr -d '\n')
 
 # Getting the Domain zone link for update with awk and sed:
 ZONE_HREF=$(curl -s -H "X-Api-Key: $APIKEY" https://dns.api.gandi.net/api/v5/domains/$DOMAIN | awk -F',' '{print $6}' | \
