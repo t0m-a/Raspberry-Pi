@@ -26,7 +26,7 @@ sed 's/".*"://;s/\"//;s/\"//;s/^[ \t]*//')
 #ZONE_HREF=$(curl -s -H "X-Api-Key: $APIKEY" https://dns.api.gandi.net/api/v5/domains/$DOMAIN | jq -r '.zone_records_href')
 
 # Checking if IP address has changed and logging result
-if [ "$CURRENT_IP" == "$RECORD_IP" ]
+if [[ "$CURRENT_IP" == "$RECORD_IP" ]]
 	then
 		echo -e "$DATE : Record unchanged" >> logs.log
 	else
@@ -38,6 +38,6 @@ if [ "$CURRENT_IP" == "$RECORD_IP" ]
              	\"rrset_values\": [\"$CURRENT_IP\"]}" \
         	$ZONE_HREF/$SUBDOMAIN/A &&
 
-		echo -e "$DATE : IP updated" > logs.log
+		echo -e "$DATE : IP updated" >> logs.log
 fi
 exit
